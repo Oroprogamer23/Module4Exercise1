@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module0Exercise0.View.EmployeePage"
+             Title="EmployeePage">
+
+    <!-- Define the theme colors -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Primary color -->
+            <Color x:Key="PrimaryBlue">#007BFF</Color>
+            <!-- Secondary shades -->
+            <Color x:Key="LightBlue">#ADD8E6</Color>
+            <Color x:Key="DarkBlue">#003366</Color>
+            <Color x:Key="AccentBlue">#1E90FF</Color>
+            <!-- Button text color -->
+            <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="10">
+        <!-- Label bound to FullName property with theme color -->
+        <Label Text="{Binding FullName}" 
+               FontSize="20" 
+               TextColor="{StaticResource DarkBlue}"
+               Margin="0,0,0,10"/>
+
+        <!-- Button bound to LoadEmployeeDataCommand with theme color -->
+        <Button Text="Load Employee Data" 
+                Command="{Binding LoadEmployeeDataCommand}"
+                BackgroundColor="{StaticResource PrimaryBlue}"
+                TextColor="{StaticResource ButtonTextColor}"
+                CornerRadius="5"/>
+
+        <!-- Button bound to AddEmployee with theme color -->
+        <Button Text="Add Employee" 
+            Command="{Binding LoadEmployeeDataCommand}"
+            BackgroundColor="{StaticResource PrimaryBlue}"
+            TextColor="{StaticResource ButtonTextColor}"
+            CornerRadius="5"/>
+
+        <!-- ListView with themed item template -->
+        <ListView ItemsSource="{Binding Employees}"
+                  SeparatorColor="{StaticResource AccentBlue}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding FullNames}" 
+                              Detail="{Binding IsActive}"
+                              TextColor="{StaticResource PrimaryBlue}"
+                              DetailColor="{StaticResource LightBlue}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </VerticalStackLayout>
+</ContentPage>
